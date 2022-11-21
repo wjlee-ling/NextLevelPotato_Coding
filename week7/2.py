@@ -2,53 +2,31 @@
 N 명의 친구(1~N번)와 M 쌍의 친구 관계 (양방향 친구)
 1번 친구한테 소문을 퍼뜨렸을 때 소문을 듣게 될 친구가 몇 명?
 
-idea : 서로소 집합을 활용한 사이클 판별(같은 팀인지 파악)
-***** 노드 수 세는 걸 모르겠음. 맞게 푼 건지 모르겠음
+처음 접근법은 "서로소 집합을 활용한 사이클 판별"이었음 (틀림)
+하지만 1번노드에서 각 노드까지 연결이 가능하냐가 핵심이지, 사이클을 찾는 문제가 아님!
+모든 경우를 구해야 하므로 DFS
 '''
-from collections import Counter
+N = int(input())
+M = int(input())
 
-#import sys
-#sys.stdin = open('./quiz/input2.txt', 'r')
+graph = [[] for _ in range(N + 1)] # 인접 리스트
+node = [0 for _ in range(N + 1)] # 각 노드가 1과 연결되어있으면 1, 아니라면 0(인덱스 값이 노드 번호)
 
-def find_parent(parent, x): # x의 부모 (속한 집합) 찾기
-    if parent[x] != x: 
-        parent[x] = find_parent(parent, parent[x])
-    return parent[x]
-
-def union_parent(parent, a, b): # 두 원소가 속한 집합을 합치기
-    a = find_parent(parent, a)
-    b = find_parent(parent, b)   
-    if a > b:
-        parent[b] = a # 1과 2가 연결되어 있으면 parent[2] = 1
-        for i in range(len(parent)):
-            if parent[i] == b:
-                parent[i] = a
-    else:
-        parent[a] = b
-        for i in range(len(parent)):
-            if parent[i] == a:
-                parent[i] = b
-
-N = int(input()) # 노드의 개수
-M = int(input()) # 간선의 개수
-parent = [0]*(N+1) # 부모 테이블 초기화
-
-for i in range(1, N+1):
-    parent[i] = i # 부모 테이블 자기 자신으로 설정
-#print(parent)
-
-answer = 0
-for i in range(M):
+for _ in range(M):
     a, b = map(int, input().split())
-    #print(parent)
-    if find_parent(parent, a) == find_parent(parent, b):
-        break
-    else:
-        union_parent(parent, a,b)
+    graph[a].append(b)
+    graph[b].append(a)
 
-print(parent)
-print(Counter(parent))
-for num in Counter(parent).values():
-    if num >= 3:
-        answer += num
-print(answer)
+#print(graph) #[[], [3], [3, 4], [1, 2, 4], [3, 5, 2], [4]]
+
+def DFS(n):
+    for next in graph[n]:
+        if node[next]: # 이미 방문했다면 pass
+            continue
+        node[next] = 1
+        DFS(next)
+        
+node[1] = 1
+DFS(1)
+#print(node) # [0, 1, 1, 1, 1, 1]
+print(sum(node))
