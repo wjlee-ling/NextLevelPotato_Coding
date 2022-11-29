@@ -21,3 +21,22 @@ for b in range(2, len(arr)):
 	answer.append(cnt)
 	
 print(*answer)
+
+''' # 3, 4 4 4 같은 케이스는 틀리는 거 아님?
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+arr = list(map(int, input().split()))
+
+stack = []
+
+for i in range(N):
+	print(len(stack), end=' ')
+	#print(stack)
+	while stack and stack[-1] <= arr[i]:
+			stack.pop()
+	#print(stack)
+	stack.append(arr[i])
+	#print("i: ", i, " stack: ", stack)
+'''
