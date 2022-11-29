@@ -22,7 +22,7 @@ for b in range(2, len(arr)):
 	
 print(*answer)
 
-''' # 3, 4 4 4 같은 케이스는 틀리는 거 아님?
+'''
 import sys
 input = sys.stdin.readline
 
