@@ -8,6 +8,32 @@ from collections import Counter
 import sys
 input = sys.stdin.readline
 
+N = int(input())
+lines = list(map(int, input().split()))
+
+# 1. 막대기 쌍 처리
+pair = [] # lines 후처리 (1, 홀수 처리)
+counter = Counter(lines)
+#print(counter)
+for line in counter.keys():
+	while counter[line] > 1:
+		counter[line] -= 2
+		pair.append(line)
+#print(pair)
+
+# 2. 직사각형들 넓이 계산
+pair.sort(reverse=True)
+ans = 0
+for i in range(0, len(pair)-1, 2):
+    ans += pair[i] * pair[i+1]
+
+print(ans)
+
+'''
+from collections import Counter
+import sys
+input = sys.stdin.readline
+
 def calculate():
 	N = int(input())
 	line = list(map(int, input().split()))
@@ -37,4 +63,5 @@ def calculate():
 	print(ans)
 
 calculate()
+'''
 
