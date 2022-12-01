@@ -27,9 +27,36 @@ max_heap = []
 for item in final_list:
 	heapq.heappush(max_heap, -item)
 
-while len(max_heap) > 0 and len(max_heap) % 2 == 0:
+while max_heap and len(max_heap) % 2 == 0:
 	a = - heapq.heappop(max_heap)
 	b = - heapq.heappop(max_heap)
 	answer += a*b
 
+print(answer)
+
+
+###################################################################
+# 네 개의 막대기 쌍이 있으면 항상 길이가 짧은 막대기 쌍 두 개와 길이가 긴 막대기 쌍 두 개를 짝 지어주는 것이 최적
+
+import sys
+def input():
+	return sys.stdin.readline().rstrip()
+
+# 첫번째 줄 입력: 막대기 수
+N = int(input())
+# 둘째 줄 입력: 막대기의 길이
+sticks = list(map(int, input().split()))
+
+cnt = [0 for _ in range(1000001)]
+pair = []
+for stick in sticks:
+	cnt[stick] += 1
+
+for length in range(1, 1000001):
+	while cnt[length] > 1:
+		cnt[length] -= 2
+		pair.append(length)
+
+pair.sort(reverse=True)
+answer = sum(pair[i-1] * pair[i] for i in range(1, len(pair), 2))
 print(answer)

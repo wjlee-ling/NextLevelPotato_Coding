@@ -38,3 +38,27 @@ for i in range(len(m_list)):
 
 temp = " ".join(answer)
 print(temp)
+
+
+##########################################################################################
+# 조건 1. a 봉우리와 b 봉우리 사이에 a번 봉우리보다 높거나 높이가 같은 봉우리가 있으면 안됨
+# ⇒ 스택 이용
+# 스택에 값이 존재하면 스택의 마지막값과 현재 i 번째 값의 비교
+## i가 마지막값보다 작을 경우는 push, 클 경우는 pop
+
+import sys
+def input():
+	return sys.stdin.readline().rstrip()
+
+# 첫 번째 입력: 봉우리의 수
+N = int(input())
+# 두 번째 입력: 봉우리의 높이가 왼쪽에서부터 순서대로 입력
+m_list = list(map(int, input().split()))
+
+stack = []
+
+for i in range(N):
+	print(len(stack), end=" ")
+	while stack and stack[-1] <= m_list[i]:
+		stack.pop()
+	stack.append(m_list[i])
