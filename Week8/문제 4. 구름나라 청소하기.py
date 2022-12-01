@@ -1,37 +1,45 @@
 # -*- coding: utf-8 -*-
 # UTF-8 encoding when using korean
-import heapq
+import sys
+
+sys.setrecursionlimit(1234)
 
 
 def solution():
-    global answer
-    answer = 0
+    global K
     N, K = map(int, input().split())
-    graph = [[0] * (N + 1) for _ in range(N + 1)]
+    graph = [[] for _ in range(N + 1)]
     for _ in range(N - 1):
         u, v = map(int, input().split())
-        graph[u][v] = graph[v][u] = 1
+        graph[u].append(v)
+        graph[v].append(u)
+
     cities = [0] + list(map(int, input().split()))
-    visited = [0] * (N + 1)
+    dp = [[0] * (K + 1) for _ in range(N + 1)]
+    answer = [0] * (K + 1)
 
-    def dfs(city: int, graph: list, cities: list, visited: list, route: list, trash: int, N: int, K: int):
-        global answer
-        for i in range(1, N + 1):
-            if graph[city][i] == 1 and visited[i] == 0:
-                visited[i] = 1
-                heapq.heappush(route, cities[i])
-                trash += cities[i]
-                while trash > K:
-                    trash -= route.pop(0)
-                answer = max(answer, trash)
-                dfs(i, graph, cities, visited, route, trash, N, K)
-                visited[i] = 0
+    def dfs(cur: int, prev: int):
+        global K
+        for i in range(K + 1):
+            if not dp[prev][i]:
+                continue
 
-        return
+            answer[i] = dp[cur][i] = 1
+            if i + cities[cur] <= K:
+                answer[i + cities[cur]] = dp[cur][i + cities[cur]] = 1
+        print(dp)
+        print(answer)
+        for next in graph[cur]:
+            if next == prev:
+                continue
+            dfs(next, cur)
 
-    dfs(1, graph, cities, visited, [], 0, N, K)
+    dp[0][0] = 1
+    dfs(1, 0)
 
-    return answer
+    for i in range(K, -1, -1):
+        if answer[i]:
+            return i
 
 
 if __name__ == "__main__":
@@ -53,7 +61,4 @@ if __name__ == "__main__":
 3 5
 2 1 4 2 1
 : 8
-
-21번 시간초과
-이외 다수 runtime error, 오답
 """

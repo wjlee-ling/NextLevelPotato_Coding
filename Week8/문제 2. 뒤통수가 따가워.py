@@ -2,17 +2,18 @@
 # UTF-8 encoding when using korean
 def solution():
     answer = []
+    height = []
     N = int(input())
     peaks = list(map(int, input().split()))
 
     for i in range(N):
-        max_peak = 0
-        count = 0
-        for j in range(i - 1, -1, -1):
-            if peaks[j] > max_peak:
-                count += 1
-            max_peak = max(peaks[j], max_peak)
-        answer.append(count)
+        answer.append(len(height))
+        # print("answer : ", answer)
+        while height and height[-1] <= peaks[i]:
+            height.pop()
+        height.append(peaks[i])
+        # print("now : ", peaks[i])
+        # print("h :", height)
 
     return answer
 
