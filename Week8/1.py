@@ -20,6 +20,7 @@ for i in range(len(num)-1):
 		answer += str(arr.index(tmp))
 
 print(int(answer))
+#print(answer) # 왜 그럼 전부 틀리는 게 아니라 일부만 틀리지?
 		
 		
 		
