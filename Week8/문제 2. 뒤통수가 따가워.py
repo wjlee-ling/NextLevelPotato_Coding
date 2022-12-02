@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 # UTF-8 encoding when using korean
+"""
+solved
+"""
+
+
 def solution():
     answer = []
     height = []
@@ -20,8 +25,3 @@ def solution():
 
 if __name__ == "__main__":
     print(*solution())
-
-
-"""
-시간초과
-"""
