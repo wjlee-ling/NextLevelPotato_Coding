@@ -8,3 +8,11 @@ def solution(s):
         else:
             answer.append(s.capitalize())
     return ' '.join(answer)
+
+'''
+# List Comprehension 쓰면 이렇게 간단하게
+# str ----split -----> list ----capitalize & join ----> str
+def solution(s):
+    return ' '.join([word.capitalize() for word in s.split(" ")])
+
+'''
