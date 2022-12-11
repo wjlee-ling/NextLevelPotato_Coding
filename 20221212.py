@@ -1,29 +1,29 @@
-import copy
-from collections import deque
+"""
+solved
+"""
 
 
 def solution(queue1, queue2):
     answer = 0
-    queue1 = deque(queue1)
-    queue2 = deque(queue2)
-    # print((sum(queue1) + sum(queue2)))
-    if (sum(queue1) + sum(queue2)) % 2 != 0:
-        return -1
+    q = queue1 + queue2
+    target = sum(q) // 2
 
-    temp1 = copy.deepcopy(queue1)
-    temp2 = copy.deepcopy(queue2)
-    while sum(queue1) != sum(queue2):
-        if sum(queue1) >= sum(queue2):
-            queue2.append(queue1.popleft())
+    i, j = 0, len(queue1) - 1
+    cur = sum(queue1)
+
+    while i < len(q) and j < len(q):
+        if cur == target:
+            return answer
+        elif cur < target and j < len(q) - 1:
+            j += 1
+            cur += q[j]
         else:
-            queue1.append(queue2.popleft())
-        # print(queue1, queue2)
+            cur -= q[i]
+            i += 1
+
         answer += 1
 
-        if temp1 == queue1 or temp2 == queue2:
-            return -1
-
-    return answer
+    return -1
 
 
 if __name__ == "__main__":
