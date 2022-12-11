@@ -5,3 +5,4 @@
 * Programmers 43238 : 입국심사 [code](20221207.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/43238)
 * Programmers 132266 : 부대복귀 [code](20221208.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/132266)
 * Programmers 140107 : 점 찍기 [code](20221209.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/140107)
+* Programmers 118667 : 두 큐 합 같게 만들기 [code](20221212.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/118667)
