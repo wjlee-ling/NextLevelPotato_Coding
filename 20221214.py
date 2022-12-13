@@ -9,13 +9,13 @@ def solution(board):
     n, m = len(board), len(board[0])
     target = min(n, m)
     # print("@", n, m, target)
-    for i in range(target, 0, -1):
-        for r in range(n - i + 1):
-            for c in range(m - i + 1):
+    for t in range(target, 0, -1):
+        for r in range(n - t + 1):
+            for c in range(m - t + 1):
                 # print("#", r, c)
                 if board[r][c] == 1:
                     # print("@@", r, c, i)
-                    answer = max(answer, rect(board, r, c, i))
+                    answer = max(answer, rect(board, r, c, t))
                     if answer:
                         return answer
 
