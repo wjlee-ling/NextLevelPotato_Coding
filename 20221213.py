@@ -14,7 +14,6 @@ def solution(stones, k):
     
     while left <= right:
         cnt = 0
-        temp = stones.copy()
         mid = (left + right) // 2 # mid == 통과하는 사람 수
         
         for stone in stones:
