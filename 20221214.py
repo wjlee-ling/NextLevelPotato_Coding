@@ -1,41 +1,20 @@
 """
-efficiency test fail
+solved
 """
 
 
 def solution(board):
     answer = 0
 
-    n, m = len(board), len(board[0])
-    target = min(n, m)
-    # print("@", n, m, target)
-    for t in range(target, 0, -1):
-        for r in range(n - t + 1):
-            for c in range(m - t + 1):
-                # print("#", r, c)
-                if board[r][c] == 1:
-                    # print("@@", r, c, t)
-                    answer = max(answer, rect(board, r, c, t))
-                    if answer:
-                        return answer
+    for i in range(1, len(board)):
+        for j in range(1, len(board[0])):
+            if board[i][j] == 1:
+                board[i][j] = min(board[i - 1][j - 1], board[i - 1][j], board[i][j - 1]) + 1
 
-    return answer
+    for b in board:
+        answer = max(answer, max(b))
 
-
-def rect(board, row, col, t):
-    cnt = 0
-    for r in range(t):
-        for c in range(t):
-            nrow = row + r
-            ncol = col + c
-            if 0 <= nrow < len(board) and 0 <= ncol < len(board[0]) and board[nrow][ncol] == 1:
-                # print("@@@", nrow, ncol)
-                cnt += 1
-
-    if cnt == t * t:
-        return t * t
-
-    return 0
+    return answer**2
 
 
 if __name__ == "__main__":
