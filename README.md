@@ -8,3 +8,4 @@
 * Programmers 118667 : 두 큐 합 같게 만들기 [code](20221212.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/118667)
 * Programmers 64062 : 징검다리 건너기 [code](20221213.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/64062)
 * Programmers 12905 : 가장 큰 정사각형 찾기 [code](20221214.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/12905)
+* Programmers 92342 : 양궁대회 [code](20221215.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/92342)
