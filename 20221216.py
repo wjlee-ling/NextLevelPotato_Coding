@@ -9,6 +9,8 @@ from heapq import heappop, heappush
 def solution(n, paths, gates, summits):
     answer = [0, float("inf")]
     summits = sorted(summits)
+    summits_set = set(summits)
+
     graph = defaultdict(list)
     for i, j, w in paths:
         graph[i].append([j, w])
@@ -23,7 +25,7 @@ def solution(n, paths, gates, summits):
 
     while hq:
         intensity, node = heappop(hq)
-        if node in set(summits) or intensity > visited[node]:
+        if node in summits_set or intensity > visited[node]:
             continue
 
         for n, w in graph[node]:
