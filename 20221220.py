@@ -1,5 +1,5 @@
 def solution(N, road, K):
-    # 일부 테스트케이스에서 실패
+    # inf를 float('inf')로 안하면 일부 테스트 케이스에서 틀림 
     import heapq  # 우선순위 큐 구현을 위함
     from collections import defaultdict
     graph = defaultdict(dict)
@@ -12,7 +12,7 @@ def solution(N, road, K):
             graph[y][x] = min(d, graph[y][x])
     
     def dijkstra(graph, start):
-        inf = 2001
+        inf = float('inf')
         distances = {node: inf for node in graph}  # start로 부터의 거리 값을 저장하기 위함
         distances[start] = 0  # 시작 값은 0이어야 함
         queue = []
