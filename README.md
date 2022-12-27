@@ -11,4 +11,5 @@
 * Programmers 92342 : 양궁대회 [code](20221215.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/92342)
 * Programmers 118669 : 등산코스 정하기 [code](20221216.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/118669)
 * Programmers 12978: 배달 [code](20221220.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/12978)
-* Programmers 72413: 배달 [code](20221222.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/72413)
+* Programmers 72413: 합승택시요금 [code](20221222.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/72413)
+* Programmers 12914: 멀리뛰기 [code](20221227.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/12914)
