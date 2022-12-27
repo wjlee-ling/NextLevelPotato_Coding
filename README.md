@@ -15,3 +15,4 @@
 * Programmers 118669 : [등산코스 정하기](https://school.programmers.co.kr/learn/courses/30/lessons/118669)
 * Programmers 12978 : [배달](https://school.programmers.co.kr/learn/courses/30/lessons/12978)
 * Programmers 72413 : [합승 택시 요금](https://school.programmers.co.kr/learn/courses/30/lessons/72413)
+* Programmers 12914 : [멀리 뛰기](https://school.programmers.co.kr/learn/courses/30/lessons/12914)
