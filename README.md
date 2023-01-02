@@ -13,3 +13,4 @@
 * Programmers 12978: 배달 [code](20221220.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/12978)
 * Programmers 72413: 합승택시요금 [code](20221222.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/72413)
 * Programmers 12914: 멀리뛰기 [code](20221227.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/12914)
+* Programmers 17676: 추석 트래픽 [code](20230102.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/17676)
