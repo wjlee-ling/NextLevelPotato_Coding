@@ -1,3 +1,6 @@
+2023
+* 01/02: [[1차] 추석 트래픽](https://school.programmers.co.kr/learn/courses/30/lessons/17676)
+
 2022 
 * 12/27: [..](https://school.programmers.co.kr/learn/courses/30/lessons/12914)
 * 12/21: [합승 택시 요금](https://school.programmers.co.kr/learn/courses/30/lessons/72413) #다익스트라
