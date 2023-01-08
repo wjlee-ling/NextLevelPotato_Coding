@@ -1,4 +1,5 @@
 2023
+* 01/09: [N으로 표현](https://school.programmers.co.kr/learn/courses/30/lessons/42895?language=python3)
 * 01/02: [[1차] 추석 트래픽](https://school.programmers.co.kr/learn/courses/30/lessons/17676)
 
 2022 
