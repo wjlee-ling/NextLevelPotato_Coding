@@ -14,4 +14,6 @@
 * Programmers 72413: 합승택시요금 [code](20221222.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/72413)
 * Programmers 12914: 멀리뛰기 [code](20221227.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/12914)
 * Programmers 17676: 추석 트래픽 [code](20230102.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/17676)
-* Programmers 84512: 모음사전 [code](20230110.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/84512)
+* Programmers 42895: N으로 표현 [code](20230109.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/42895)
+* 
+* Programmers 84512: 모음사전 [code](20230113.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/84512)
