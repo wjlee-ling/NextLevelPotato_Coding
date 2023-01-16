@@ -1,5 +1,6 @@
 2023
 * 01/16: [도둑질](https://school.programmers.co.kr/learn/courses/30/lessons/42897) #DP
+* 01/13: [모음사전](https://school.programmers.co.kr/learn/courses/30/lessons/84512)
 * 01/11: [디펜스 게임](https://school.programmers.co.kr/learn/courses/30/lessons/142085)
 * 01/09: [N으로 표현](https://school.programmers.co.kr/learn/courses/30/lessons/42895?language=python3)
 * 01/02: [[1차] 추석 트래픽](https://school.programmers.co.kr/learn/courses/30/lessons/17676)
