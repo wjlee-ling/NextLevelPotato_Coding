@@ -18,3 +18,4 @@
 * Programmers 142085: 디펜스 게임 [code](20230111.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/142085) 
 * Programmers 84512: 모음사전 [code](20230113.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/84512)
 * Programmers 42897: 도둑질 [code](20230116.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/42897)
+* Programmers 138476: 귤 고르기 [code](20230118.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/138476)
