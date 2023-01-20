@@ -1,4 +1,5 @@
 2023
+* 01/20: [개인정보 수집 유효기간](https://school.programmers.co.kr/learn/courses/30/lessons/150370#qna)
 * 01/18: [귤 고르기](https://school.programmers.co.kr/learn/courses/30/lessons/138476)
 * 01/16: [도둑질](https://school.programmers.co.kr/learn/courses/30/lessons/42897) #DP
 * 01/13: [모음사전](https://school.programmers.co.kr/learn/courses/30/lessons/84512)
