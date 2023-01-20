@@ -19,3 +19,4 @@
 * Programmers 84512: 모음사전 [code](20230113.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/84512)
 * Programmers 42897: 도둑질 [code](20230116.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/42897)
 * Programmers 138476: 귤 고르기 [code](20230118.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/138476)
+* Programmers 138476: 개인정보 수집 유효기간 [code](20230120.py) / [pro link](https://school.programmers.co.kr/learn/courses/30/lessons/150370)
