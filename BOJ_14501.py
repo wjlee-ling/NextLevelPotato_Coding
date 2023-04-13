@@ -16,7 +16,7 @@ def solution():
         global answer
         if now == N:
             answer = max(answer, pay)
-            # print(pay, pays)
+            print(pay, pays)
             return
 
         if now > end and consults[now][0] <= N - now:
