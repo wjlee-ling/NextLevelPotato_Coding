@@ -21,7 +21,7 @@ def solution():
     while q:
         row, col, d = q.popleft()
         flag = True  # 청소되지 않은 빈 칸이 없다면 True
-        board[row][col] = answer
+        board[row][col] = answer  # 방문 기록
 
         for i in range(1, 5):  # 주변 4칸 중 청소
             nd = (d - 1 * i) % 4
@@ -41,9 +41,9 @@ def solution():
             else:
                 break
 
-        # for b in board:
-        #     print(b)
-        # print()
+        for b in board:
+            print(b)
+        print()
 
     print(answer - 1)
 
