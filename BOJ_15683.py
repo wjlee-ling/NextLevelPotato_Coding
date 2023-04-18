@@ -56,32 +56,36 @@ def get_headings(type):
     else:
         return [(0,1,2,3)]
 
-def search(seen_sofar):
-    
+def search(Graph):
+    from copy import deepcopy
+    cp = deepcopy(Graph)
     if cams:
         cx, cy = cams.pop()
-        watches = watch_all_directions(cx,cy) # 4방향 감시 가능 지ㄱ
+        indices = watch_all_directions(cx,cy) # 4방향 감시 가능 지ㄱ
         for combns in get_headings(graph[cx][cy]):
             # 카메라별 패턴 # e.g. (0,2) or (1,3) for 2nd camera type
-            seen_per_combn = set()
             for heading in combns:
-                seen_per_combn = seen_per_combn.union(watches[heading])
-            search(seen_sofar | seen_per_combn)
+                for x,y in indices[heading]:
+                    cp[x][y] = "#"
+            
+            print(f"origin: ({cx}, {cy}) :: heading: {combns}\n{cp}")
+            search(cp)
+            cp = deepcopy(Graph)
 
     else:
         black = 0
         global ans
         for i in range(r):
             for j in range(c):
-                if (i,j) not in seen_sofar:
+                if Graph[i][j] == "0":
                     black += 1
         ans = min(ans, black)
-        if ans == black:
-            print(sorted(seen_sofar, key=lambda x: (x[0],x[1])))
+        # if ans == black:
+        #     print(sorted(seen_sofar, key=lambda x: (x[0],x[1])))
         return ans
 
 ans = float("inf")
-search(set())
+search(graph)
 # print(max_seen, n_cams, n_walls)
 # ans = r*c - max_seen - n_cams - n_walls
 print(ans)
