@@ -4,7 +4,7 @@ using namespace std;
 
 int N,M,C, res, ans = INT_MAX; //가로, 세, 카메라수, 감시되는 수
 int map[8][8];
-pair<int,int> moves[4] = {{-1,0}, {0,1}, {1,0}, {0,-1}};
+pair<int,int> moves[4] = { {-1,0}, {0,1}, {1,0}, {0,-1} };
 vector<pair<int,int>> v; // coordinates of each camera
 vector<int> cctv[6];
 
