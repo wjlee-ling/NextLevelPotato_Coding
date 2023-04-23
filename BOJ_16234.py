@@ -1,8 +1,9 @@
 from collections import deque
-N, L, R = map(int, input().split())
+import sys; readl = sys.stdin.readline
+N, L, R = map(int, readl().split())
 graph = []
 for _ in range(N):
-    graph.append(list(map(int, input().split())))
+    graph.append(list(map(int, readl().split())))
 
 def bfs(x,y):
     moves = [(1,0),(0,1),(-1,0),(0,-1)]
