@@ -1,3 +1,5 @@
+## 정답: https://velog.io/@mmzz0219/BOJ-5373-%ED%81%90%EB%B9%99-Python-JAVA
+
 from collections import defaultdict
 from copy import deepcopy
 
