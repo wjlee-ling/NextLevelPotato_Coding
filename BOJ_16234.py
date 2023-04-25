@@ -1,3 +1,7 @@
+"""
+인구이동
+"""
+
 from collections import deque
 
 
@@ -37,7 +41,7 @@ def solution():
             # print("@")
             # for b in board:
             #     print(b)
-            # print()
+            # print()   
 
             return True
 
