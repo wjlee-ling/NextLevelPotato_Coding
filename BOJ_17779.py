@@ -1,3 +1,8 @@
+"""
+게리멘더링 2
+"""
+
+
 def solution():
     N = int(input())
     board = [list(map(int, input().split())) for _ in range(N)]

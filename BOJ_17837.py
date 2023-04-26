@@ -1,3 +1,8 @@
+"""
+새로운 게임 2
+"""
+
+
 def solution():
     N, K = map(int, input().split())
     board = [list(map(int, input().split())) for _ in range(N)]
