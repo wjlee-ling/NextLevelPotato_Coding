@@ -1,3 +1,5 @@
+# 63-64번줄에서 do_blue를 할 때 당번의 노드 방향 뿐만 아니라 스택 내 모든 요소의 방향을 바꿨었음..
+
 from collections import defaultdict
 N, K = map(int, input().split())
 graph = []
@@ -56,8 +58,10 @@ def do_red(nx,ny, new_input:list):
     return False
   
 def do_blue(cx,cy,stack):
-    for new in stack:
-        heading[new] = (heading[new]+1) if heading[new]%2==1 else (heading[new]-1)
+    new = stack[-1]
+    heading[new] = (heading[new]+1) if heading[new]%2==1 else (heading[new]-1)
+    # for new in stack:
+    #     heading[new] = (heading[new]+1) if heading[new]%2==1 else (heading[new]-1)
     h = heading[stack[-1]]
     (dx, dy) =  moves[h]
 
@@ -77,7 +81,7 @@ def do_blue(cx,cy,stack):
 step = 1
 flag = False
 while True:
-    if step >= 1000:
+    if step >= 1001:
         step = -1
         break
     for i in range(K):
@@ -86,11 +90,6 @@ while True:
         if res:
             flag = True 
             break
-    print(f"step: {step}  =============")
-    for k, val in stacks.items():
-        if len(val) > 0:
-            print(k, val) 
-    print(heading)
     if flag:
         break
     step+=1
