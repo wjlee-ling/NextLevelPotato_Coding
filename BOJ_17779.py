@@ -71,9 +71,9 @@ def solution():
                 if temp_board[r][c] == 0:
                     temp_board[r][c] = 4
 
-        # for t in temp_board:
-        #     print(t)
-        # print()
+        for t in temp_board:
+            print(t)
+        print()
 
         populations = [0] * 5
         for r in range(N):

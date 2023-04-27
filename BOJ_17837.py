@@ -6,8 +6,8 @@
 def solution():
     N, K = map(int, input().split())
     board = [list(map(int, input().split())) for _ in range(N)]
-    loc_board = [[[] for _ in range(N)] for _ in range(N)]
-    pieces = []
+    loc_board = [[[] for _ in range(N)] for _ in range(N)]  # 체스말 현재 위치 표현 보드
+    pieces = []  # 체스말 위치 저장
     for i in range(K):
         row, col, d = map(int, input().split())
         row -= 1
@@ -25,7 +25,7 @@ def solution():
     # print()
 
     for answer in range(1, 1001):
-        # print("@@@@@@", answer)
+        print("@@@@@@", answer)
         for i, piece in enumerate(pieces):
             row, col, d = piece
 
@@ -123,10 +123,10 @@ def solution():
                 # print(loc_board[nrow][ncol])
                 return answer
 
-            # print("@", i)
-            # for l in loc_board:
-            #     print(l)
-            # print()
+            print("@", i)
+            for l in loc_board:
+                print(l)
+            print()
 
     return -1
 
