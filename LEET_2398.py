@@ -1,3 +1,7 @@
+"""
+2398. Maximum Number of Robots Within Budget
+"""
+
 from collections import deque
 from typing import List
 
