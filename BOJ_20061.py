@@ -11,13 +11,13 @@ def pop_row(x,y):
     global ans
     if graph[x][0] == graph[x][1] == graph[x][2] == graph[x][3] == 1:
         ans += 1
-    graph[x][0] = graph[x][1] = graph[x][2] = graph[x][3] = 0
+        graph[x][0] = graph[x][1] = graph[x][2] = graph[x][3] = 0
 
 def pop_col(x,y):
     global ans
     if graph[0][y] == graph[1][y] == graph[2][y] == graph[3][y] == 1:
         ans+= 1
-    graph[0][y] = graph[1][y] = graph[2][y] = graph[3][y] = 0
+        graph[0][y] = graph[1][y] = graph[2][y] = graph[3][y] = 0
 
 def check_green():
     from copy import deepcopy
@@ -48,14 +48,19 @@ def check_blue():
     if flag:
         graph = deepcopy(new_graph)
     
-def move(ls:list):
+def move(ls):
+    # for row in graph:
+    #     print(row)    
+    t, cx, cy = ls[-1]
+    
     if t==2: #horz block
         # move horz
-        cx, cy = ls[-1]
+        # cx, cy = ls[-1]
         nx, ny = cx, cy+1
         while can_move(nx,ny):
             ny = ny+1
         ny -= 1
+        # print(nx, ny)
         if cy != ny:
             # del old
             graph[cx][cy] = 0
@@ -69,7 +74,7 @@ def move(ls:list):
             check_blue()
         
         # move vert
-        cx, cy1, cy2 = ls[0][0], ls[0][1], ls[1][1]
+        cx, cy1, cy2 = ls[0][1], ls[0][2], ls[1][2]
         nx, ny1, ny2 = cx+1, cy1, cy2
         while can_move(nx, ny1) and can_move(nx, ny2):
             nx = nx+1
@@ -82,7 +87,7 @@ def move(ls:list):
     
     elif t ==3: # vert block
         # move horz
-        cy, cx1, cx2 = ls[0][1], ls[0][0], ls[1][0]
+        cy, cx1, cx2 = ls[0][2], ls[0][1], ls[1][1]
         ny, nx1, nx2 = cy+1, cx1, cx2
         while can_move(nx1, ny) and can_move(nx2, ny):
             ny = ny+1
@@ -94,7 +99,7 @@ def move(ls:list):
             check_blue()
             
         # move vert
-        cx, cy = ls[-1]
+        # cx, cy = ls[-1]
         nx, ny = cx+1, cy
         while can_move(nx,ny):
             nx = nx+1
@@ -110,7 +115,7 @@ def move(ls:list):
             
     elif t == 1:
         # single block
-        cx, cy = ls[-1]
+        # cx, cy = ls[-1]
         # vert
         nx = cx+1
         while can_move(nx,cy):
@@ -129,15 +134,21 @@ def move(ls:list):
             graph[cx][cy] = 0
             graph[cx][ny] = 1
             check_blue()
+    # for row in graph:
+    #     print(row)
+    # print("================")
 
 for _ in range(N):
     t, x, y = map(int, input().split())
     if t == 1:
-        move([(x,y)])
+        graph[x][y] =1
+        move([(t, x,y)])
     elif t == 2:
-        move([(x,y), (x,y+1)])
+        graph[x][y] = graph[x][y+1] = 1
+        move([(t,x,y), (t,x,y+1)])
     elif t == 3:
-        move([(x,y), (x+1,y)])
+        graph[x][y] = graph[x+1][y] = 1
+        move([(t,x,y), (t,x+1,y)])
 
 print(ans)
 cnt = 0
