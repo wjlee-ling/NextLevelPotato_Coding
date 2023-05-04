@@ -11,13 +11,20 @@ def pop_row(x,y):
     global ans
     if graph[x][0] == graph[x][1] == graph[x][2] == graph[x][3] == 1:
         ans += 1
-        graph[x][0] = graph[x][1] = graph[x][2] = graph[x][3] = 0
+        for i in range(x, 4, -1):
+            for j in range(0,4):
+                graph[i][j] = graph[i-1][j]
+        graph[4][0] = graph[4][1] = graph[4][2] = graph[4][3] = 0
 
 def pop_col(x,y):
     global ans
     if graph[0][y] == graph[1][y] == graph[2][y] == graph[3][y] == 1:
         ans+= 1
-        graph[0][y] = graph[1][y] = graph[2][y] = graph[3][y] = 0
+        for i in range(y, 4, -1):
+            for j in range(0,4):
+                graph[j][i] = graph[j][i-1]        
+        graph[0][4] = graph[1][4] = graph[2][4] = graph[3][4] = 0
+
 
 def check_green():
     from copy import deepcopy
@@ -49,8 +56,9 @@ def check_blue():
         graph = deepcopy(new_graph)
     
 def move(ls):
-    # for row in graph:
-    #     print(row)    
+    for row in graph:
+        print(row)    
+    print("--------------")
     t, cx, cy = ls[-1]
     
     if t==2: #horz block
@@ -69,8 +77,8 @@ def move(ls):
             graph[nx][ny] = 1
             graph[nx][ny-1] = 1
             # check and pop full columns
-            pop_col(nx,ny)
             pop_col(nx,ny-1)
+            pop_col(nx,ny)
             check_blue()
         
         # move vert
@@ -109,8 +117,8 @@ def move(ls):
             graph[cx-1][cy] = 0
             graph[nx][ny] = 1
             graph[nx-1][ny] = 1
-            pop_row(nx,ny)
             pop_row(nx-1,ny)
+            pop_row(nx,ny)
             check_green()
             
     elif t == 1:
@@ -124,6 +132,7 @@ def move(ls):
         if cx != nx:
             graph[cx][cy] = 0
             graph[nx][cy] = 1
+            pop_row(nx,cy)
             check_green()
         # horz
         ny = cy+1
@@ -133,10 +142,11 @@ def move(ls):
         if cy != ny:
             graph[cx][cy] = 0
             graph[cx][ny] = 1
+            pop_col(cx,ny)
             check_blue()
-    # for row in graph:
-    #     print(row)
-    # print("================")
+    for row in graph:
+        print(row)
+    print("================")
 
 for _ in range(N):
     t, x, y = map(int, input().split())
