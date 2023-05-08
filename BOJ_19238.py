@@ -51,11 +51,11 @@ def mv_taxi(x, y, gas):
             del starts[(cx,cy)]
             dest_x, dest_y = dests[taxi_num]
             # go to his destination
-            q = deque([(cx,cy,0)])
+            q2 = deque([(cx,cy,0)])
             visited = [[1]*N for _ in range(N)]
             visited[cx][cy] = 0
-            while q:
-                cx, cy, cs = q.popleft()
+            while q2:
+                cx, cy, cs = q2.popleft()
                 if cx == dest_x and cy == dest_y:
                     if gas-cs < 0: return -1
                     ret = mv_taxi(dest_x, dest_y, gas+cs)
@@ -68,7 +68,7 @@ def mv_taxi(x, y, gas):
                         if gas-cs-1 < 0:
                             # run out of gas on the way to pick up passenger
                             return -1
-                        q.append((nx,ny, cs+1))
+                        q2.append((nx,ny, cs+1))
 
     return ret
 
