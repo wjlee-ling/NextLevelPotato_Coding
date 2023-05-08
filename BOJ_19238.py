@@ -30,8 +30,20 @@ def mv_taxi(x, y, gas):
     while q:
         cx, cy, cs = q.popleft()
         # print(f"cx: {cx} cy: {cy} rest: {gas-cs}")
-        if starts.get((cx,cy), 0):
+        next_ls = [] # candidates for next ride
+        for dx, dy in moves:
+            nx,ny = cx+dx, cy+dy
+            # go to get client
+            if 0<=nx<N and 0<=ny<N and graph[nx][ny]==0 and visited[nx][ny]:
+                visited[nx][ny] = 0 # visited
+                q.append((nx,ny, cs+1))
+                
+                if starts.get((nx,ny), 0):
+                    next_ls.append((nx,ny,cs+1))
+                    
+        if next_ls:
             # find closest passenger
+            cx,cy,cs = sorted(next_ls, key=lambda x: (x[2], x[0], x[1]))[0]
             gas -= cs
             if gas <= 0: return -1;
         
@@ -58,17 +70,7 @@ def mv_taxi(x, y, gas):
                             return -1
                         q.append((nx,ny, cs+1))
 
-        next_ls = [] # candidate for next ride
-        for dx, dy in moves:
-            nx,ny = cx+dx, cy+dy
-            # go to get client
-            if 0<=nx<N and 0<=ny<N and graph[nx][ny]==0 and visited[nx][ny]:
-                visited[nx][ny] = 0 # visited
-                q.append((nx,ny, cs+1))
-
-
-
-
     return ret
+
 ret = mv_taxi(x,y,g)
 print(ret)
