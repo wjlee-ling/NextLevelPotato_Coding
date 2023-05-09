@@ -21,6 +21,7 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
     vector<vector<int>> seen(21, vector<int>(21, 1));
     // Coord ele(x, y, 0);
     int taxi_num=-1, ret=-1;
+    bool search_pass = true;
     if (del_num==0) return gas;
 
     q.push(Coord(x, y, 0));
@@ -31,17 +32,17 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
         cout << "x " << cx << " y: " << cy << " d: " << cd << endl;
         q.pop();
         // find the closest passenger (i.e. no specific target)
-        if (pass[cx][cy]!=-1 && taxi_num == dest[cx][cy]) {
+        if (pass[cx][cy]!=-1 && search_pass) {
             taxi_num = pass[cx][cy]; // taxi idx
             pass[cx][cy] = -1;
             // seen.resize(21, vector<int>(21, 1)); // reset seen
             for (auto& row:seen) {
                 row.assign(row.size(), 1);
             }
-
+            search_pass = false;
             seen[cx][cy] = 0;
             gas -= cd;
-            std::cout << "passenger: " << taxi_num  << " x: "<< cx << " y: "  << cy << " gas: " << gas << endl;
+            std::cout << "passenger: " << taxi_num  << "-> x: "<< cx << " y: "  << cy << " gas: " << gas << endl;
             if (gas <= 0) return -1;
             q = {};
             for (int i=0; i<4; i++) {
@@ -59,7 +60,7 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
             dest[cx][cy] = -1;
             if (gas - cd < 0) return -1; // out of gas on the way to the destination
             if (gas + cd <0) return -1; // out of gas even after being gased
-            std::cout << "dest: " << taxi_num  << " cx: "<< x << " cy: "  << y << " gas refilled: " << gas+cd << endl;
+            std::cout << "dest: " << taxi_num  << "-> cx: "<< cx << " cy: "  << cy << " gas refilled: " << gas+cd << endl;
             ret = bfs(pass, dest, cx, cy, gas+cd, del_num-1);
             return ret;
 
