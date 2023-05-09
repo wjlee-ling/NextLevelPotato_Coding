@@ -50,7 +50,8 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
                 int dx, dy, nx, ny;
                 dx = xmoves[i], dy = ymoves[i];
                 nx = cx+dx, ny = cy+dy;
-                if (0<=nx<=N && 0<=ny<=N && graph[nx][ny] != 1 && seen[nx][ny]){
+                if (nx < 0 || nx > 20 || ny <0 || ny > 20) continue;
+                if (graph[nx][ny] != 1 && seen[nx][ny]){
                     q.push(Coord(nx,ny,1));
                     seen[nx][ny] = 0;
                 }
