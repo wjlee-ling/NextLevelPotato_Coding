@@ -8,6 +8,7 @@ vector<vector<int> > graph(21, vector<int>(21, 1));
 vector<vector<int>> passengers(21, vector<int>(21,-1)), destinations(21, vector<int>(21,-1));
 vector<int> xmoves = {-1,0,0,1};
 vector<int> ymoves = {0,-1,1,0};
+int N, M, gas, origin_x, origin_y, ret;
 
 struct Coord{
     int x;
@@ -42,14 +43,14 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
             search_pass = false;
             seen[cx][cy] = 0;
             gas -= cd;
-            std::cout << "passenger: " << taxi_num  << "-> x: "<< cx << " y: "  << cy << " gas: " << gas << endl;
+            // std::cout << "passenger: " << taxi_num  << "-> x: "<< cx << " y: "  << cy << " gas: " << gas << endl;
             if (gas <= 0) return -1;
             q = {};
             for (int i=0; i<4; i++) {
                 int dx, dy, nx, ny;
                 dx = xmoves[i], dy = ymoves[i];
                 nx = cx+dx, ny = cy+dy;
-                if (graph[nx][ny] != 1 && seen[nx][ny]){
+                if (0<=nx<=N && 0<=ny<=N && graph[nx][ny] != 1 && seen[nx][ny]){
                     q.push(Coord(nx,ny,1));
                     seen[nx][ny] = 0;
                 }
@@ -60,7 +61,7 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
             dest[cx][cy] = -1;
             if (gas - cd < 0) return -1; // out of gas on the way to the destination
             if (gas + cd <0) return -1; // out of gas even after being gased
-            std::cout << "dest: " << taxi_num  << "-> cx: "<< cx << " cy: "  << cy << " gas refilled: " << gas+cd << endl;
+            // std::cout << "dest: " << taxi_num  << "-> cx: "<< cx << " cy: "  << cy << " gas refilled: " << gas+cd << endl;
             ret = bfs(pass, dest, cx, cy, gas+cd, del_num-1);
             return ret;
 
@@ -70,6 +71,8 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
                 int dx, dy, nx, ny;
                 dx = xmoves[i], dy = ymoves[i];
                 nx = cx+dx, ny = cy+dy;
+                // cout << "N: " << N << "  " <<nx << ny << endl;
+                if (nx < 0 || nx > 20 || ny <0 || ny > 20) continue;
                 if (graph[nx][ny] != 1 && seen[nx][ny]){
                     q.push(Coord(nx,ny,cd+1));
                     seen[nx][ny] = 0;
@@ -83,7 +86,7 @@ int bfs(vector<vector<int>>& pass, vector<vector<int>>& dest, int x, int y, int 
 
 
 int main(){
-    int N, M, gas, origin_x, origin_y, ret;
+    
     cin >> N >> M >> gas;
     for (int i=1; i<N+1; i++){
         for (int j=1; j<N+1; j++) {
