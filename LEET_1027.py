@@ -1,23 +1,18 @@
+"""
+1027. Longest Arithmetic Subsequence
+"""
+
+
 from typing import List
 
 
 class Solution:
-    def longestArithSeqLength(self, nums: List[int]) -> int:
-        answer = 2
-        n = len(nums)
-        dp = [[2] * n for _ in range(n)]
-        for i in range(n):
-            for j in range(i + 1, n):
-                diff = nums[j] - nums[i]
-                for k in range(i):
-                    if nums[k] + diff == nums[i]:
-                        dp[i][j] = max(dp[i][j], dp[k][i] + 1)
-                        break
-
-                answer = max(answer, dp[i][j])
-            # print(dp)
-
-        return answer
+    def longestArithSeqLength(self, A):
+        dp = {}
+        for i in range(len(A)):
+            for j in range(i + 1, len(A)):
+                dp[j, A[j] - A[i]] = dp.get((i, A[j] - A[i]), 1) + 1
+        return max(dp.values())
 
 
 if __name__ == "__main__":
