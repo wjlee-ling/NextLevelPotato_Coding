@@ -1,3 +1,8 @@
+"""
+1155. Number of Dice Rolls With Target Sum
+"""
+
+
 class Solution:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
         MOD = 10**9 + 7

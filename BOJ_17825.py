@@ -1,3 +1,8 @@
+"""
+주사위 윷놀이
+"""
+
+
 def solution():
     global answer
     answer = 0

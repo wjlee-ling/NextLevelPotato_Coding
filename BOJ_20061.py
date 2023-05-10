@@ -1,3 +1,8 @@
+"""
+모노미노도미노 2
+"""
+
+
 def solution():
     N = int(input())
     global answer
