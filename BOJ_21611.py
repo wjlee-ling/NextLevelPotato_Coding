@@ -13,9 +13,9 @@ def solution():
     board = []
 
     def indexing():
-        x, y = N // 2, N // 2
-        dx = [0, 1, 0, -1]
-        dy = [-1, 0, 1, 0]
+        y, x = N // 2, N // 2
+        dy = [0, 1, 0, -1]
+        dx = [-1, 0, 1, 0]
         depth = 0
 
         while True:
@@ -23,23 +23,23 @@ def solution():
                 if i % 2 == 0:
                     depth += 1
                 for j in range(depth):
-                    x += dx[i]
                     y += dy[i]
-                    indices.append((x, y))
-                    if x == 0 and y == 0:
+                    x += dx[i]
+                    indices.append((y, x))
+                    if y == 0 and x == 0:
                         return
 
     def magic(d, dist):
-        x, y = N // 2, N // 2
-        dx = [-1, 1, 0, 0]
-        dy = [0, 0, -1, 1]
+        y, x = N // 2, N // 2
+        dy = [-1, 1, 0, 0]
+        dx = [0, 0, -1, 1]
 
         for i in range(dist):
-            x += dx[d]
             y += dy[d]
-            if x < 0 or x >= N or y < 0 or y >= N:
+            x += dx[d]
+            if y < 0 or y >= N or x < 0 or x >= N:
                 break
-            board[x][y] = 0
+            board[y][x] = 0
 
         fill_blank()
         while boom():
@@ -48,14 +48,14 @@ def solution():
 
     def fill_blank():
         blanks = deque()
-        for x, y in indices:
-            if board[x][y] == 0:
-                blanks.append((x, y))
-            elif board[x][y] > 0 and blanks:
+        for y, x in indices:
+            if board[y][x] == 0:
+                blanks.append((y, x))
+            elif board[y][x] > 0 and blanks:
                 nx, ny = blanks.popleft()
-                board[nx][ny] = board[x][y]
-                board[x][y] = 0
-                blanks.append((x, y))
+                board[nx][ny] = board[y][x]
+                board[y][x] = 0
+                blanks.append((y, x))
 
     def boom():
         global answer
@@ -63,9 +63,9 @@ def solution():
         cnt = 0
         num = -1
         flag = False
-        for x, y in indices:
-            if num == board[x][y]:
-                visited.append((x, y))
+        for y, x in indices:
+            if num == board[y][x]:
+                visited.append((y, x))
                 cnt += 1
             else:
                 if cnt >= 4:
@@ -77,33 +77,33 @@ def solution():
                     if cnt >= 4:
                         board[nx][ny] = 0
 
-                num = board[x][y]
+                num = board[y][x]
                 cnt = 1
-                visited.append((x, y))
+                visited.append((y, x))
 
         return flag
 
     def grouping():
         cnt = 1
-        tmpx, tmpy = indices[0]
-        num = board[tmpx][tmpy]
+        tmpy, tmpx = indices[0]
+        num = board[tmpy][tmpx]
         nums = []
 
         for i in range(1, len(indices)):
-            x, y = indices[i][0], indices[i][1]
-            if num == board[x][y]:
+            y, x = indices[i][0], indices[i][1]
+            if num == board[y][x]:
                 cnt += 1
             else:
                 nums.append(cnt)
                 nums.append(num)
-                num = board[x][y]
+                num = board[y][x]
                 cnt = 1
 
         idx = 0
-        for x, y in indices:
+        for y, x in indices:
             if not nums:
                 break
-            board[x][y] = nums[idx]
+            board[y][x] = nums[idx]
             idx += 1
             if idx == len(nums):
                 break
