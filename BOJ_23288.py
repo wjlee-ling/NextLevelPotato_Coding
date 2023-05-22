@@ -1,3 +1,8 @@
+"""
+주사위 굴리기 2
+"""
+
+
 from collections import deque
 
 
