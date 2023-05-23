@@ -67,7 +67,7 @@ void dispense(Heater& heater){
         for (int i=0; i<3; i++){
             int nx = cx + wdx[dir][i];
             int ny = cy + wdy[dir][i];
-            if (0<=nx<R && 0<=ny<C && hist[nx][ny] && is_wall(cx,cy,nx,ny,dir)) {
+            if (0<=nx && nx <R && 0<=ny && ny <C && hist[nx][ny] && is_wall(cx,cy,nx,ny,dir)) {
                 hist[nx][ny] = 0;
                 q.push(make_pair(make_pair(nx,ny), l-1));
             }
@@ -180,7 +180,7 @@ int main() {
         control();
         reduce_edges();
         ans++;         
-        if (ans>=100){
+        if (ans>=101){ // 100 -> 101 고쳐서 해결 !! 
             ans = 101;
             break;
         }
