@@ -123,7 +123,6 @@ def solution():
             q = deque()
             q.append([y, x, 4])
 
-            global visited
             visited = [[0] * C for _ in range(R)]
             visited[y][x] = 1
             add_heat[y][x] += 5
@@ -196,8 +195,6 @@ def solution():
                 return False
         return True
 
-    global visited
-    visited = [[0] * C for _ in range(R)]
     cnt = 1
 
     global add_heat
