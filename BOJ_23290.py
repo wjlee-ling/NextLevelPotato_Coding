@@ -53,7 +53,6 @@ def solution():
                     for _ in range(length):
                         d = fish.popleft()
                         nd = d
-                        flag = True
                         for i in range(8):
                             nd = (d - i) % 8
                             ny = y + fdy[nd]
@@ -62,9 +61,8 @@ def solution():
                             if isin(ny, nx):
                                 if (smell_board[ny][nx] == 0 or smell_board[ny][nx] + 2 < t) and not (ny == sy and nx == sx):
                                     move_board[ny][nx].append(nd)
-                                    flag = False
                                     break
-                        if flag:
+                        else:
                             move_board[y][x].append(d)
         # print(sy, sx)
         # print("@move board")
