@@ -18,6 +18,7 @@ class Solution:
             mid = (left + right + 1) // 2
             cnt = 1
 
+            # 최소 차의 최대값을 구함 (mid가 최소 차이이고 mid들 중 최대를 만족하는 것이 정답)
             j = 0
             for i in range(1, len(price)):
                 if price[i] - price[j] >= mid:
