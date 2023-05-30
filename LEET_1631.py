@@ -20,7 +20,7 @@ class Solution:
             for d in range(4):
                 ny = y + dy[d]
                 nx = x + dx[d]
-                if ny < 0 or ny == m or nx < 0 or nx == n or visited[ny][nx]:
+                if not (0 <= ny < m and 0 <= nx < n and visited[ny][nx] == 0):
                     continue
                 if abs(heights[ny][nx] - heights[y][x]) <= threadshold and dfs(ny, nx, visited, threadshold):
                     return True
