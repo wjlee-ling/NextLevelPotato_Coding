@@ -33,6 +33,7 @@ class Solution:
         left = 0
         ans = right = 10**6
         while left <= right:
+            # 반올림과 버림의 차이?
             mid = left + (right - left) // 2
             if canReachDestination(mid):
                 right = mid - 1  # Try to find better result on the left side
