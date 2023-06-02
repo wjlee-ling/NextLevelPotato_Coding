@@ -19,13 +19,8 @@ def dfs(step=1):
         return
 
     original_graph = deepcopy(graph)
-    for i in [0,1]:
-        # print(f"dir == {i} step == {step}")
+    for i in range(4):
         push_map(i)
-        print(step )
-        for row in graph:
-            print(row)
-        print("================")
         dfs(step+1)
         graph = deepcopy(original_graph)
 
@@ -59,16 +54,15 @@ def push_array(arr):
     global ans
     if sum(arr) == 0:
         return arr
+    
+    # 중간에 있는 0 지우기
+    cnt = 0
+    while 0 in arr:
+        arr.remove(0)
+        cnt += 1
+    arr.extend([0]*cnt)
 
-    for idx in range(len(arr)-1):
-        # 중간의 빈칸 없애기
-        cnt = 0
-        while arr[idx] == 0:
-            arr.append(arr.pop(idx))
-            cnt += 1
-            if cnt >= N-idx:
-                break
-
+    for idx in range(N-1):
         if arr[idx] == arr[idx+1]:
             arr[idx] = arr[idx]*2
             ans = max(arr[idx], ans) ## 최댓값으로 업뎃
@@ -76,17 +70,16 @@ def push_array(arr):
             arr.append(0)
     return arr
 
-def early_stop(step):
-    global ans
-    maxi = 0
-    for i in range(N):
-        for j in range(N):
-            maxi = max(maxi, graph[i][j])
-    
-    if maxi * 2 **(5-step) < ans:
-        return True
-    return False
 
 dfs()
 ans = max(ans, given_max)
 print(ans)
+
+
+# #case 1
+# 5
+# 2 2 4 8 16
+# 0 0 0 0 0
+# 0 0 0 0 0
+# 0 0 0 0 0
+# 2 2 4 8 16 
