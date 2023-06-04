@@ -1,5 +1,5 @@
 """
-2517. Maximum Tastiness of Candy Basket
+410. Split Array Largest Sum
 """
 
 
@@ -9,8 +9,9 @@ from typing import List
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
         left, right = max(nums), sum(nums)
-        while left < right:
-            mid = (left + right) // 2
+        while left <= right:
+            # mid = (left + right) // 2
+            mid = left + (right - left) // 2
             total, cnt = 0, 1
             for num in nums:
                 if total + num <= mid:
@@ -21,8 +22,8 @@ class Solution:
             if cnt > k:
                 left = mid + 1
             else:
-                right = mid
-        return right
+                right = mid - 1
+        return right + 1
 
 
 if __name__ == "__main__":
