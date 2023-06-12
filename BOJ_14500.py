@@ -15,7 +15,7 @@ def is_valid(nx, ny):
 
 def pattern1(cx, cy, dir, step, cumsum):
     global ans
-    dirs = {-1: [0,1,2,3], 0: [0,1,3], 1:[0,1,2], 2:[1,2,3], 3:[0,2,3]}
+    dirs = {-1: [0,1,2,3], 0: [1,3], 1:[1,2], 2:[1,2,3], 3:[2,3]}
     cumsum += graph[cx][cy]
     if step==4:
         ans = max(cumsum, ans)
