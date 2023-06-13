@@ -9,7 +9,6 @@ using namespace std;
 
 int N, M;
 vector<vector<int>> grid;
-vector<vector<int>> seen;
 vector<pair<int,int>> virus;
 vector<pair<int,int>> space; // empty space
 
@@ -37,6 +36,8 @@ int count_safe(vector<vector<int>>& graph){
 }
 
 int dfs(){
+    vector<vector<int>> seen;
+    seen.resize(N, vector<int>(M, 0));
     stack<pair<int,int>> st;
     for (auto p:virus) {
         st.push(p);
@@ -45,6 +46,7 @@ int dfs(){
     vector<vector<int>> temp;
     temp.insert(temp.end(), grid.begin(), grid.end()); // copy map
     
+
     while (!st.empty()) {
         pair<int, int> curr = st.top();
         st.pop();
@@ -61,31 +63,15 @@ int dfs(){
     return count_safe(temp);
 }
 
-// void check_grid(){
-//     cout << "=========================" <<endl;
-//     for (int n=0; n < N; n++) {
-//         for (int m=0; m < M; m++) {
-//             cout << grid[n][m] << " ";
-//         }
-//         cout << "" << endl;
-//     }
-// }
-
 void build_walls(int idx, int sum){
     if (sum == 3){
-        seen.resize(N, vector<int>(M, 0));
         int cnt = dfs();
         ans = max(ans, cnt);
         return ;
     } else if (idx > space.size()-1) {
         return ;
     }
-    // vector<vector<int>> temp;
-    // for (int r=0; r<N; r++){
-    //     for (int c=0; c<M; c++){
-    //         temp[r][c] = grid[r][c];
-    //     }
-    // }
+
     // build wall at space[idx]
     grid[space[idx].first][space[idx].second] = 1;
     build_walls(idx+1, sum+1);
