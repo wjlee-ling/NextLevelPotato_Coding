@@ -36,6 +36,9 @@ int count_safe(vector<vector<int>>& graph){
 }
 
 int dfs(){
+    // 오답 노트:
+    // 이전엔 seen 이 global_variable 이면서 dfs() 돌리기 전에 새로 init하고자 seen.resize()로 했었음
+    // 그러나 .resize()는 사이즈를 조정하는 것으로 reinit 용이 아님. 값을 새로하는 것은 fill(seen.begin(), seen.end(), vector<int>(M,0)) 으로 했어야 함.
     vector<vector<int>> seen;
     seen.resize(N, vector<int>(M, 0));
     stack<pair<int,int>> st;
