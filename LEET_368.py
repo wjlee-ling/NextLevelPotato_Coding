@@ -4,7 +4,7 @@ from typing import List
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         ## 새로운 num이 있을 때 이전 num 중 가장 큰 num
-        d = dict() # {가장 작은 수: 배수}
+        d = dict() # {해당 수: 해당 수의 공약수들}
         nums.sort()
         for num in nums:
             d[num] = []
