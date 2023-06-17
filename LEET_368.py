@@ -33,7 +33,7 @@ class Solution:
 
 if __name__ == "__main__":
     solution = Solution()
-    nums = [[1, 2, 3], [1, 2, 4, 8], [1, 2, 4, 8, 5]]
+    nums = [[1, 2, 3], [1, 2, 4, 8], [1, 2, 4, 8, 5], [1, 2, 3, 4, 6, 24]]
     output = [[1, 2], [1, 2, 4, 8], [1, 2, 4, 8]]
 
     for n in nums:
