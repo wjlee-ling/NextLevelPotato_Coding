@@ -41,7 +41,7 @@ class Solution:
 
 if __name__ == "__main__":
     solution = Solution()
-    digits = ["23", "", "2", "234"]
+    digits = ["23", "", "2", "234", "432"]
     output = [
         ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"],
         ["a", "b", "c"],
@@ -77,4 +77,4 @@ if __name__ == "__main__":
     ]
 
     for d in digits:
-        print(solution.letterCombinations(d))
+        print("#", solution.letterCombinations(d))
