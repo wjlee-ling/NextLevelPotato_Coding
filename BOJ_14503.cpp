@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
 
@@ -19,36 +20,38 @@ int reverse(int cx, int cy, int dir){
 }
 
 void step(int x, int y, int dir){
-    if (grid[x][y] == 0) {
-        // 청소
-        grid[x][y] = 2; // 청소
-        ans ++;
-    }
-    int i = 1;
-    int new_dir, nx, ny;
-    while (i <= 4){
-        new_dir = dir - i;
-        if (new_dir < 0) new_dir = 3;
-
-        nx = x + xmoves[new_dir];
-        ny = y + ymoves[new_dir];
-
-        if (grid[nx][ny] == 0) {
-            // 청소 안된 곳이 있으면 
-            step(nx, ny, new_dir);
-            return ;
+    queue<pair<int,int>> q;
+    while (! q.empty()){
+        x = q.front().first;
+        y = q.front().second;
+        q.pop();
+        if (grid[x][y] == 0){
+            // cleaning
+            grid[x][y] = 2;
+            ans ++;
         }
-        i++;
+        int nx, ny;
+        for (int i=0; i<4; i++){
+            int new_dir;
+            new_dir = dir - i; 
+            if (new_dir <0 ) new_dir = 3;
+            
+            nx = x + xmoves[new_dir];
+            ny = y + ymoves[new_dir];
+            if (grid[nx][ny] == 0) {
+                q.push(pair(nx,ny));
+                break;
+            }
+        }
+        // 후진
+        nx = x - xmoves[dir];
+        ny = y - ymoves[dir];
+        if (isValid(nx,ny)){
+            q.push(pair(nx,ny));
+        } else {
+            break;
+        } 
     }
-    // 청소할 수 없어 후진
-    new_dir = reverse(x, y, dir);
-    nx = x + xmoves[new_dir];
-    ny = y + ymoves[new_dir];
-    if (isValid(nx, ny)){
-        step(nx, ny, new_dir);
-        return ;
-    }
-
 }
 
 int main(){
