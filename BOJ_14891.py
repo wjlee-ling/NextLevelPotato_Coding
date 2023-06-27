@@ -1,3 +1,7 @@
+"""
+14891. 톱니바퀴
+"""
+
 from collections import deque
 
 
@@ -8,37 +12,40 @@ def solution():
     #     print(g)
     # print()
 
+    def is_valid(idx):
+        if 0 <= idx < len(gears):
+            return True
+        return False
+
+    def left(idx, direction):
+        if not is_valid(idx) or gears[idx + 1][6] == gears[idx][2]:
+            return
+
+        left(idx - 1, -direction)
+        gears[idx].rotate(direction)
+
+    def right(idx, direction):
+        if not is_valid(idx) or gears[idx - 1][2] == gears[idx][6]:
+            return
+
+        right(idx + 1, -direction)
+        gears[idx].rotate(direction)
+
+    answer = 0
     K = int(input())
     for _ in range(K):
         num, direction = map(int, input().split())
         num -= 1
 
-        def check_right(start, d):
-            if start > 3 or gears[start - 1][2] == gears[start][6]:
-                return
-
-            check_right(start + 1, -d)
-            gears[start].rotate(d)
-
-        def check_left(start, d):
-            if start < 0 or gears[start][2] == gears[start + 1][6]:
-                return
-
-            check_left(start - 1, -d)
-            gears[start].rotate(d)
-
-        check_right(num + 1, -direction)
-        check_left(num - 1, -direction)
+        left(num - 1, -direction)
+        right(num + 1, -direction)
         gears[num].rotate(direction)
-
         # for g in gears:
         #     print(g)
         # print()
 
-    answer = 0
-    for i in range(4):
-        if gears[i][0]:
-            answer += 2**i
+    for i in range(len(gears)):
+        answer += gears[i][0] * 2**i
 
     print(answer)
 
